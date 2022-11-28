@@ -1,5 +1,20 @@
 <resources>
     <string name="app_name">Eventx</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_account">Conta</string>
+    <string name="menu_my_events">Meus eventos</string>
+    <string name="menu_create_events">Criar evento</string>
+    <string name="menu_settings">Configurações</string>
+    <string name="menu_logout">Logout</string>
+    <string name="enter">Entrar</string>
+    <string name="toggle_open">Abrir</string>
+    <string name="toggle_close">Fechar</string>
+    <string name="txt_layout_email">Email</string>
+    <string name="txt_layout_password">Senha</string>
+    <string name="btn_login_enter">Entrar</string>
+    <string name="txt_forgot_password">Esqueceu a senha?</string>
+    <string name="txt_no_account">Não tem cadastro?</string>
+    <string name="txt_title_login">Login</string>
 
     <!-- array com os estados disponíveis -->
     <string-array name="states">
