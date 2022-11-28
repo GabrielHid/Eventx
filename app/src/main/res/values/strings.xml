@@ -1,0 +1,57 @@
+<resources>
+    <string name="app_name">Eventx</string>
+
+    <!-- array com os estados disponíveis -->
+    <string-array name="states">
+        <item>Acre</item>
+        <item>Alagoas</item>
+        <item>Amapá</item>
+        <item>Amazonas</item>
+        <item>Bahia</item>
+        <item>Ceará</item>
+        <item>Espírito Santo</item>
+        <item>Goiás</item>
+        <item>Maranhão</item>
+        <item>Mato Grosso</item>
+        <item>Mato Grosso do Sul</item>
+        <item>Minas Gerais</item>
+        <item>Pará</item>
+        <item>Paraíba</item>
+        <item>Paraná</item>
+        <item>Pernambuco</item>
+        <item>Piauí</item>
+        <item>Rio de Janeiro</item>
+        <item>Rio Grande do Norte</item>
+        <item>Rio Grande do Sul</item>
+        <item>Rondônia</item>
+        <item>Roraima</item>
+        <item>Santa Catarina</item>
+        <item>São Paulo</item>
+        <item>Sergipe</item>
+        <item>Tocantins</item>
+        <item>Distrito Federal</item>
+    </string-array>
+
+    <!-- array com os países disponíveis -->
+    <string-array name="countries">
+        <item>Argentina</item>
+        <item>Bolívia</item>
+        <item>Brasil</item>
+        <item>Chile</item>
+        <item>Colômbia</item>
+        <item>Equador</item>
+        <item>Guiana</item>
+        <item>Paraguai</item>
+        <item>Peru</item>
+        <item>Suriname</item>
+        <item>Uruguai</item>
+        <item>Venezuela</item>
+    </string-array>
+
+    <!-- array com as permissões disponíveis -->
+    <string-array name="roles">
+        <item>Administrador</item>
+        <item>Usuário comum</item>
+    </string-array>
+
+</resources>

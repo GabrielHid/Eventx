@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "371010517721",
+    "project_id": "eventx-4e5d1",
+    "storage_bucket": "eventx-4e5d1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:371010517721:android:97fc4e220acfd2902a1cc8",
+        "android_client_info": {
+          "package_name": "br.edu.ifsp.arq.ads.dmos5.eventx"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "371010517721-v0q8dduu6kjhg94mshp00v8rfrl8aq0r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA8y7zYe5ILIlsiY6-qLpB79WR5JLnPcj4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "371010517721-v0q8dduu6kjhg94mshp00v8rfrl8aq0r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
