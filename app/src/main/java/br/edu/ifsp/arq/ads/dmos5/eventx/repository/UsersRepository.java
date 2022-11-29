@@ -179,4 +179,43 @@ public class UsersRepository {
         return liveData;
     }
 
+    public void resetPassword(String email){
+        JSONObject parametros = new JSONObject();
+        try {
+            parametros.put("email", email);
+            parametros.put("requestType", "PASSWORD_RESET");
+            parametros.put("Content-Type", "application/json; charset=utf-8");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, BASE_URL + PASSWORD_RESET + KEY, parametros,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.d(this.toString(), response.keys().toString());
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        NetworkResponse response = error.networkResponse;
+                        if (error instanceof ServerError && response != null) {
+                            try {
+                                String res = new String(response.data,
+                                        HttpHeaderParser.parseCharset(response.headers, "utf-8"));
+                                JSONObject obj = new JSONObject(res);
+                                Log.d(this.toString(), obj.toString());
+                            } catch ( UnsupportedEncodingException e1) {
+                                e1.printStackTrace();
+                            } catch (JSONException e2) {
+                                e2.printStackTrace();
+                            }
+                        }
+                    }
+                });
+
+        queue.add(request);
+    }
 }

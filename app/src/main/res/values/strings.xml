@@ -20,6 +20,12 @@
     <string name="txt_title_new_user">Novo Usuário</string>
     <string name="msg_erro_password">A senha tem que possuir no mínimo 6 caracteres.</string>
     <string name="msg_login">Usuário e/ou senha inválidos!</string>
+    <string name="txt_email">Email</string>
+    <string name="Enviar" />
+    <string name="btn_ok_resetar_senha">Enviar</string>
+    <string name="msg_resetar_email">Verifique seu e-mail para resetar a senha.</string>
+    <string name="btn_cancel_resetar_senha">Cancelar</string>
+    <string name="title_dialog_resetar_senha">Resetar Senha</string>
 
     <!-- array com os estados disponíveis -->
     <string-array name="states">
