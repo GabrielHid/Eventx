@@ -46,4 +46,8 @@ public class UserViewModel extends AndroidViewModel {
         return usersRepository.loadUser(id.get());
     }
 
+    public void resetPassword(String email) {
+        usersRepository.resetPassword(email);
+    }
+
 }
