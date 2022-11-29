@@ -1,7 +1,10 @@
 package br.edu.ifsp.arq.ads.dmos5.eventx.model;
 
-import java.io.Serializable;
+import androidx.annotation.NonNull;
+import androidx.room.Ignore;
 
+import java.io.Serializable;
+import java.util.UUID;
 
 public class User implements Serializable {
 
@@ -15,19 +18,29 @@ public class User implements Serializable {
     private String state;
     private String country;
 
-    public User(String id, String name, String email, String password, String role){
-        this.id = id;
+    public User(String name, String surname, String email, String password, String role, String birthDate, String state, String country) {
+        this.id = UUID.randomUUID().toString();
         this.name = name;
+        this.surname = surname;
         this.email = email;
         this.password = password;
         this.role = role;
+        this.birthDate = birthDate;
+        this.state = state;
+        this.country = country;
     }
 
+    @Ignore
+    public User() {
+        this("", "", "", "", "", "", "", "");
+    }
+
+    @NonNull
     public String getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(@NonNull String id) {
         this.id = id;
     }
 

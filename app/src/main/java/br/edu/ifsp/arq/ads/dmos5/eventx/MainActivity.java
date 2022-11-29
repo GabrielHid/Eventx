@@ -1,6 +1,7 @@
 package br.edu.ifsp.arq.ads.dmos5.eventx;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -11,7 +12,9 @@ import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,6 +26,9 @@ import com.google.android.material.navigation.NavigationView;
 
 import com.google.android.material.navigation.NavigationView;
 
+import br.edu.ifsp.arq.ads.dmos5.eventx.model.User;
+import br.edu.ifsp.arq.ads.dmos5.eventx.viewmodel.UserViewModel;
+
 public class MainActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
@@ -31,10 +37,13 @@ public class MainActivity extends AppCompatActivity {
     private TextView txtTitle;
     private TextView txtLogin;
 
+    UserViewModel userViewModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
         setToolBar();
         setDrawerLayout();
         setNavigationView();
@@ -104,14 +113,22 @@ public class MainActivity extends AppCompatActivity {
     private void setTextLogin() {
         txtLogin = navigationView.getHeaderView(0)
                 .findViewById(R.id.header_profile_name);
-        txtLogin.setOnClickListener(new View.OnClickListener() {
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    @Override
+    protected void onResume() {
+        super.onResume();
+        userViewModel.isLogged().observe(this, new Observer<User>() {
             @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,
-                        UserLoginActivity.class);
-                startActivity(intent);
+            public void onChanged(User user) {
+                if(user != null){
+                    txtLogin.setText(user.getName()
+                            + " " + user.getSurname());
+                    String image = PreferenceManager.getDefaultSharedPreferences(MainActivity.this)
+                            .getString(MediaStore.EXTRA_OUTPUT, null);
+                }
             }
         });
     }
-
 }

@@ -21,18 +21,23 @@
                 android:layout_height="?attr/actionBarSize" />
         </com.google.android.material.appbar.AppBarLayout>
 
-
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_marginTop="25dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="40dp"
-            android:orientation="vertical"
-            android:layout_marginVertical="10dp"
-            android:background="@drawable/border_circular"
-            android:paddingBottom="5dp">
+            android:layout_gravity="center"
+            android:text="Últimos Eventos"
+            android:textSize="25dp"
+            android:fontFamily="sans-serif-light"
+            android:textColor="@color/tertiaryColor"/>
 
-
-        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="16dp"
+            android:background="@color/secondaryColor"
+            android:layout_marginRight="16dp" />
 
     </LinearLayout>
 
