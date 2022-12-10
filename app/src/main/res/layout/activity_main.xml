@@ -7,12 +7,14 @@
     android:fitsSystemWindows="true"
     tools:context=".MainActivity">
 
-    <LinearLayout
+    <RelativeLayout
+        android:id="@+id/relative_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
         <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -22,16 +24,20 @@
         </com.google.android.material.appbar.AppBarLayout>
 
         <TextView
-            android:layout_marginTop="25dp"
+            android:id="@+id/text_view_ultimos_eventos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Últimos Eventos"
-            android:textSize="25dp"
+            android:layout_below="@id/app_bar"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="25dp"
             android:fontFamily="sans-serif-light"
-            android:textColor="@color/tertiaryColor"/>
+            android:text="Últimos Eventos"
+            android:textColor="@color/tertiaryColor"
+            android:textSize="25dp" />
 
         <View
+            android:layout_below="@+id/text_view_ultimos_eventos"
+            android:id="@+id/view_line"
             android:layout_width="match_parent"
             android:layout_height="3dp"
             android:layout_marginTop="10dp"
@@ -39,7 +45,40 @@
             android:background="@color/secondaryColor"
             android:layout_marginRight="16dp" />
 
-    </LinearLayout>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/view_line"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_events"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp" />
+        </ScrollView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btn_add_event"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:contentDescription="Adicionar Atividade"
+            app:srcCompat="@drawable/ic_menu_new_event"
+            tools:ignore="RtlHardcoded"
+            android:visibility="gone"/>
+
+    </RelativeLayout>
 
     <include layout="@layout/menu_navigation_view"/>
 

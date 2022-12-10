@@ -5,4 +5,8 @@
     <color name="tertiaryColor">#3d0a49</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="offWhite">#FAF9F6</color>
+    <color name="green">#157347</color>
+    <color name="red">#BB2D3B</color>
+    <color name="yellow">#FFCA2C</color>
 </resources>

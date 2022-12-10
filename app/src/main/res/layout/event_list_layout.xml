@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:strokeColor="@color/secondaryColor"
+    app:strokeWidth="2dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardBackgroundColor="@color/secondaryColor"
+    android:layout_margin="10dp"
+    app:contentPadding="10dp"
+    app:cardCornerRadius="10dp"
+    app:cardPreventCornerOverlap="true"
+    app:cardUseCompatPadding="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginBottom="5dp">
+
+            <TextView
+                android:layout_gravity="center"
+                android:id="@+id/txt_layout_event_name"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Nome do evento"
+                android:textColor="@color/tertiaryColor"
+                android:textSize="20dp"
+                android:gravity="left"/>
+            <TextView
+                android:fontFamily="sans-serif-condensed"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Status:"
+                android:textColor="@color/tertiaryColor"
+                android:textSize="18dp"
+                android:gravity="right"/>
+
+            <Button
+                android:id="@+id/btn_status"
+                android:layout_width="25dp"
+                android:layout_height="35dp"
+                android:paddingLeft="5dp"
+                app:cornerRadius="60dp"
+                android:layout_marginLeft="5dp"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/tertiaryColor"
+            android:layout_marginBottom="20dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginBottom="5dp"
+            android:gravity="center">
+
+            <TextView
+                android:fontFamily="sans-serif-condensed"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Início"
+                android:textColor="@color/tertiaryColor"
+                android:textSize="20dp"
+                android:gravity="left"/>
+            <TextView
+                android:fontFamily="sans-serif-condensed"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Fim"
+                android:textColor="@color/tertiaryColor"
+                android:textSize="20dp"
+                android:gravity="left"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginBottom="20dp">
+
+            <TextView
+                android:id="@+id/txt_layout_start_event"
+                android:fontFamily="sans-serif-condensed"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="00/00/0000"
+                android:layout_marginLeft="5dp"
+                android:textColor="@color/black"
+                android:textSize="18dp"/>
+            <TextView
+                android:id="@+id/txt_layout_end_event"
+                android:fontFamily="sans-serif-condensed"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="5dp"
+                android:text="00/00/0000"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:gravity="left"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginBottom="5dp"
+            android:gravity="center">
+
+            <TextView
+                android:fontFamily="sans-serif-condensed"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Descrição"
+                android:textColor="@color/tertiaryColor"
+                android:textSize="20dp"
+                android:gravity="left"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginBottom="5dp"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/txt_layout_description"
+                android:fontFamily="sans-serif-condensed"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="5dp"
+                android:text="Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum,Lorem ipsum"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:gravity="left"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginTop="10dp">
+
+            <Button
+                android:id="@+id/btn_participar"
+                android:layout_width="200dp"
+                android:layout_height="match_parent"
+                android:text="Participar"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</com.google.android.material.card.MaterialCardView>

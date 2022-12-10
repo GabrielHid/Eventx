@@ -1,26 +1,29 @@
 package br.edu.ifsp.arq.ads.dmos5.eventx.model;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 public class Event implements Serializable {
 
     private String id;
     private String name;
     private String description;
-    private Date startDate;
-    private Date endDate;
+    private String startDate;
+    private String endDate;
     private String situation;
+    private String ownerId;
     private List<User> participants;
 
-    public Event(String id, String name, String description, Date startDate, Date endDate, String situation){
+    public Event(String id, String name, String description, String startDate, String endDate, String situation, String owner, List<User> participants) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.startDate = startDate;
         this.endDate = endDate;
         this.situation = situation;
+        this.ownerId = owner;
+        this.participants = participants;
     }
 
     public String getId() {
@@ -47,19 +50,19 @@ public class Event implements Serializable {
         this.description = description;
     }
 
-    public Date getStartDate() {
+    public String getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(String startDate) {
         this.startDate = startDate;
     }
 
-    public Date getEndDate() {
+    public String getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(String endDate) {
         this.endDate = endDate;
     }
 
@@ -71,11 +74,32 @@ public class Event implements Serializable {
         this.situation = situation;
     }
 
+    public String getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(String ownerId) {
+        this.ownerId = ownerId;
+    }
+
     public List<User> getParticipants() {
         return participants;
     }
 
     public void setParticipants(List<User> participants) {
         this.participants = participants;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Event event = (Event) o;
+        return Objects.equals(id, event.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
