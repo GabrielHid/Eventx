@@ -26,6 +26,12 @@
     <string name="msg_resetar_email">Verifique seu e-mail para resetar a senha.</string>
     <string name="btn_cancel_resetar_senha">Cancelar</string>
     <string name="title_dialog_resetar_senha">Resetar Senha</string>
+    <string name="txt_layout_event_name">Nome</string>
+    <string name="txt_layout_event_initial_date">Início</string>
+    <string name="txt_layout_event_end_date">Fim</string>
+    <string name="txt_layout_event_description">Descrição</string>
+    <string name="txt_button_add_event">Cadastrar</string>
+    <string name="txt_title_new_event">Novo Evento</string>
 
     <!-- array com os estados disponíveis -->
     <string-array name="states">
@@ -78,6 +84,14 @@
     <string-array name="roles">
         <item>Administrador</item>
         <item>Usuário comum</item>
+    </string-array>
+
+    <!-- array com os status disponíveis -->
+    <string-array name="status">
+        <item>Active</item>
+        <item>InProgress</item>
+        <item>Finished</item>
+        <item>Canceled</item>
     </string-array>
 
 </resources>
