@@ -26,6 +26,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.internal.NavigationMenuItemView;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -51,10 +53,12 @@ public class UserProfileActivity extends AppCompatActivity {
     private ImageView imageProfile;
     private Uri photoURI;
     private final int REQUEST_TAKE_PHOTO = 1;
+    User user;
 
 
     private UserViewModel userViewModel;
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +67,7 @@ public class UserProfileActivity extends AppCompatActivity {
         imageProfile = findViewById(R.id.header_profile_image);
 
         setComponents();
+        loadUserLogged();
         setToolBar();
         setBtnUpdateUser();
         setBtnLogout();
@@ -74,22 +79,6 @@ public class UserProfileActivity extends AppCompatActivity {
     protected void onResume(){
         super.onResume();
 
-        userViewModel.isLogged().observe(this, new Observer<User>() {
-            @Override
-            public void onChanged(User user) {
-                if(user != null){
-
-                    txtName.setText(
-                            user.getName().substring(0, 1).toUpperCase() + user.getName().substring(1).toLowerCase()
-                            + " " +
-                                    user.getSurname().substring(0, 1).toUpperCase() + user.getSurname().substring(1).toLowerCase()
-                    );
-                    txtEmail.setText((user.getEmail()));
-                    txtBirthDate.setText(user.getBirthDate());
-                    txtLocalidade.setText(user.getState() + " - " + user.getCountry().toUpperCase());
-                }
-            }
-        });
     }
 
     private void setComponents() {
@@ -166,5 +155,27 @@ public class UserProfileActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    private void loadUserLogged() {
+        userViewModel.isLogged().observe(this, new Observer<User>() {
+            @Override
+            public void onChanged(User user) {
+                if(user == null){
+                    startActivity(new Intent(UserProfileActivity.this,
+                            UserLoginActivity.class));
+                    finish();
+                }else{
+                    UserProfileActivity.this.user = user;
+
+                    txtName.setText(user.getName());
+                    txtEmail.setText((user.getEmail()));
+                    txtBirthDate.setText(user.getBirthDate());
+                    txtLocalidade.setText(user.getState() + " - " + user.getCountry().toUpperCase());
+
+                }
+            }
+        });
     }
 }

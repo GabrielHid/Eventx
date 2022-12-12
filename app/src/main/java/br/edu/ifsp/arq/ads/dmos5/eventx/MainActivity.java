@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
         setToolBar();
         setDrawerLayout();
         loadUserLogged();
-        setTextLogin();
+       // setTextLogin();
         getEventList();
         setNavigationView();
     }
@@ -212,8 +212,6 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-
-
     private void setTextLogin() {
         txtLogin = navigationView.getHeaderView(0)
                 .findViewById(R.id.header_profile_name);
@@ -231,8 +229,8 @@ public class MainActivity extends AppCompatActivity {
                         FloatingActionButton floatButton = findViewById(R.id.btn_add_event);
                         floatButton.setVisibility(View.VISIBLE);
                     }
-                    txtLogin.setText(user.getName()
-                            + " " + user.getSurname());
+//                    txtLogin.setText(user.getName()
+//                            + " " + user.getSurname());
                     String image = PreferenceManager.getDefaultSharedPreferences(MainActivity.this)
                             .getString(MediaStore.EXTRA_OUTPUT, null);
 

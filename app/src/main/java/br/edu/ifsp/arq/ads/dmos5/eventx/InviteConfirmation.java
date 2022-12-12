@@ -40,34 +40,27 @@ public class InviteConfirmation extends AppCompatActivity {
     private String userId;
     private Invite invate;
 
-
-
     private UserViewModel userViewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_invite_confirmation);
 
-        userId = getIntent().getExtras().getString("user");
-
         userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
 
         setComponents();
         setToolBar();
-        //setBtnUpdateInvite();
+        setBtnUpdateInvite();
         setBtnRecused();
         getEvent(userId);
     }
 
     private void setComponents() {
-        txtName = findViewById(R.id.txt_user_name);
         txtName = findViewById(R.id.txt_invite_name);
         txtDescription = findViewById(R.id.txt_invite_desc);
         txtDate = findViewById(R.id.txt_invite_date);
         btnEdtInvite = findViewById(R.id.btn_accept);
         btnRecused = findViewById(R.id.btn_recused);
-
-        txtName.setText("Tese");
     }
 
     private void setToolBar() {
@@ -85,7 +78,7 @@ public class InviteConfirmation extends AppCompatActivity {
         return true;
     }
 
-    /*private void setBtnUpdateInvite() {
+    private void setBtnUpdateInvite() {
         btnEdtInvite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -95,7 +88,7 @@ public class InviteConfirmation extends AppCompatActivity {
             }
         });
     }
-*/
+
     private void setBtnRecused(){
 
         btnRecused.setOnClickListener(new View.OnClickListener() {
