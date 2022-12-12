@@ -57,4 +57,5 @@ public class UserViewModel extends AndroidViewModel {
     public void logout(){
         PreferenceManager.getDefaultSharedPreferences(getApplication()).edit().remove(USER_ID).apply();
     }
+
 }
