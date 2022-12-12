@@ -29,6 +29,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.internal.NavigationMenuItemView;
 import com.google.android.material.navigation.NavigationView;
 
 import com.google.android.material.navigation.NavigationView;
@@ -166,13 +167,17 @@ public class MainActivity extends AppCompatActivity {
                                 Toast.makeText(MainActivity.this, "Meus eventos", Toast.LENGTH_SHORT).show();
                                 break;
                             case R.id.nav_events:
-                                Toast.makeText(MainActivity.this, "Novo evento", Toast.LENGTH_SHORT).show();
+                                intent = new Intent(MainActivity.this, AddEventActivity.class);
+                                startActivity(intent);
                                 break;
                             case R.id.nav_settings:
                                 Toast.makeText(MainActivity.this, "Configuração", Toast.LENGTH_SHORT).show();
                                 break;
                             case R.id.nav_logout:
-                                Toast.makeText(MainActivity.this, "logout", Toast.LENGTH_SHORT).show();
+                                userViewModel.logout();
+                                finish();
+                                intent = new Intent(MainActivity.this, UserLoginActivity.class);
+                                startActivity(intent);
                                 break;
                         }
                         drawerLayout.closeDrawer(GravityCompat.START);
@@ -226,6 +231,7 @@ public class MainActivity extends AppCompatActivity {
                             + " " + user.getSurname());
                     String image = PreferenceManager.getDefaultSharedPreferences(MainActivity.this)
                             .getString(MediaStore.EXTRA_OUTPUT, null);
+
                 }
             }
         });
@@ -249,6 +255,10 @@ public class MainActivity extends AppCompatActivity {
                     finish();
                 }else{
                     MainActivity.this.user = user;
+                    if(!user.getRole().equals("admin")){
+                        NavigationMenuItemView createEvent = drawerLayout.findViewById(R.id.nav_events);
+                        createEvent.setVisibility(View.GONE);
+                    }
                 }
             }
         });

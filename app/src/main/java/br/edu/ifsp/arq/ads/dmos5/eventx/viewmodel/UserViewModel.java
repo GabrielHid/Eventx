@@ -50,4 +50,11 @@ public class UserViewModel extends AndroidViewModel {
         usersRepository.resetPassword(email);
     }
 
+    public void logout(){
+        PreferenceManager.getDefaultSharedPreferences(getApplication())
+                .edit()
+                .remove(USER_ID)
+                .apply();
+    }
+
 }
