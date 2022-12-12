@@ -63,8 +63,9 @@ public class MainActivity extends AppCompatActivity {
     CustomAdapterEvent adapter;
 
     List<Event> events = new ArrayList<>();
-    User userLogged = new User();
+    User user;
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,12 +79,11 @@ public class MainActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(layoutManager);
 
-
-
         setFloatActionButton();
         setToolBar();
         setDrawerLayout();
         setNavigationView();
+        loadUserLogged();
         setTextLogin();
         getEventList();
     }
@@ -125,14 +125,15 @@ public class MainActivity extends AppCompatActivity {
                                     document.getString("startDate"),
                                     document.getString("endDate"),
                                     document.getString("situation"),
-                                    document.getString("ownerId"),
-                                    participants
+                                    document.getString("ownerId")
                             );
+
+                            event.setParticipants(participants);
 
                             events.add(event);
                         }
 
-                        adapter = new CustomAdapterEvent(MainActivity.this, events);
+                        adapter = new CustomAdapterEvent(MainActivity.this, events, user);
                         mRecyclerView.setAdapter(adapter);
 
                     }
@@ -197,14 +198,12 @@ public class MainActivity extends AppCompatActivity {
         txtTitle.setText(getString(R.string.app_name));
     }
 
-    @Override
-    public void onBackPressed() {
-        if(drawerLayout.isDrawerOpen(GravityCompat.START)){
-            drawerLayout.closeDrawer(GravityCompat.START);
-        }else{
-            super.onBackPressed();
-        }
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
+
+
 
     private void setTextLogin() {
         txtLogin = navigationView.getHeaderView(0)
@@ -230,6 +229,52 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+        getEventList();
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        getEventList();
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    private void loadUserLogged() {
+        userViewModel.isLogged().observe(this, new Observer<User>() {
+            @Override
+            public void onChanged(User user) {
+                if(user == null){
+                    startActivity(new Intent(MainActivity.this,
+                            UserLoginActivity.class));
+                    finish();
+                }else{
+                    MainActivity.this.user = user;
+                }
+            }
+        });
+    }
+
+    public void deleteEvent(Event event){
+        pd.setTitle("Deletando...");
+        pd.show();
+
+        db.collection("event").document(event.getId())
+                .delete()
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful()){
+                            pd.dismiss();
+                            Toast.makeText(MainActivity.this, "Produto deletado!", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(MainActivity.this, MainActivity.class));
+                        }
+                        else{
+                            pd.dismiss();
+                            Toast.makeText(MainActivity.this, "Erro ao deletar produto", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+    }
+
 
 }

@@ -20,6 +20,21 @@ public class ViewHolderEvent extends RecyclerView.ViewHolder{
 
         mView = itemView;
 
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mClickListener.onItemClick(view, getAdapterPosition());
+            }
+        });
+
+        itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                mClickListener.onItemLongClick(view, getAdapterPosition());
+                return false;
+            }
+        });
+
         mEventName = mView.findViewById(R.id.txt_layout_event_name);
         mStartEvent = mView.findViewById(R.id.txt_layout_start_event);
         mEndEvent = mView.findViewById(R.id.txt_layout_end_event);
@@ -27,6 +42,16 @@ public class ViewHolderEvent extends RecyclerView.ViewHolder{
 
         mBtnStatus = mView.findViewById(R.id.btn_status);
         mBtnParticipate = mView.findViewById(R.id.btn_participar);
+    }
+
+    private ViewHolderEvent.ClickListener mClickListener;
+    public interface ClickListener{
+        void onItemClick(View view, int position);
+        void onItemLongClick(View view, int position);
+    }
+
+    public void setOnClickListener(ViewHolderEvent.ClickListener clickListener){
+        mClickListener = clickListener;
     }
 
 }

@@ -1,6 +1,9 @@
 package br.edu.ifsp.arq.ads.dmos5.eventx.model;
 
+import androidx.room.Ignore;
+
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -15,7 +18,7 @@ public class Event implements Serializable {
     private String ownerId;
     private List<User> participants;
 
-    public Event(String id, String name, String description, String startDate, String endDate, String situation, String owner, List<User> participants) {
+    public Event(String id, String name, String description, String startDate, String endDate, String situation, String owner) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -23,7 +26,11 @@ public class Event implements Serializable {
         this.endDate = endDate;
         this.situation = situation;
         this.ownerId = owner;
-        this.participants = participants;
+    }
+
+    @Ignore
+    public Event() {
+        this("", "", "", "", "", "", "");
     }
 
     public String getId() {

@@ -31,7 +31,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="25dp"
             android:fontFamily="sans-serif-light"
-            android:text="Últimos Eventos"
+            android:text="Eventos:"
             android:textColor="@color/tertiaryColor"
             android:textSize="25dp" />
 
