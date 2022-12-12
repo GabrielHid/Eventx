@@ -60,8 +60,6 @@ public class CustomAdapterEvent extends RecyclerView.Adapter<ViewHolderEvent> {
 
                             if (i == 0) {
 
-                                listEventActivity.finish();
-
                                 String id = events.get(position).getId();
                                 String name = events.get(position).getName();
                                 String description = events.get(position).getDescription();
@@ -84,11 +82,21 @@ public class CustomAdapterEvent extends RecyclerView.Adapter<ViewHolderEvent> {
                             }
 
                             if (i == 1) {
-
                                 listEventActivity.deleteEvent(events.get(position));
                             }
                         }
-                    }).create().show();
+                    }).create();
+
+
+                    if(user != null){
+                        if(user.getId().equals(events.get(position).getOwnerId())){
+                            builder.show();
+                        } else{
+                            Toast.makeText(listEventActivity.getBaseContext(),
+                                    "Apenas o dono do evento pode editar",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    }
                 }
         });
 
