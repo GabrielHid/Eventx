@@ -1,10 +1,13 @@
 package br.edu.ifsp.arq.ads.dmos5.eventx.repository;
 
 import android.app.Application;
+import android.app.ProgressDialog;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
@@ -25,6 +28,8 @@ import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 
+import br.edu.ifsp.arq.ads.dmos5.eventx.UserProfileActivity;
+import br.edu.ifsp.arq.ads.dmos5.eventx.model.Invite;
 import br.edu.ifsp.arq.ads.dmos5.eventx.model.User;
 import br.edu.ifsp.arq.ads.dmos5.eventx.viewmodel.UserViewModel;
 
@@ -218,4 +223,13 @@ public class UsersRepository {
 
         queue.add(request);
     }
+
+    public void updateUser(User user){
+        DocumentReference userRef = firestore.collection("user").document(user.getId());
+
+        userRef.set(user).addOnSuccessListener(unused -> {
+            return;
+        });
+    }
+
 }

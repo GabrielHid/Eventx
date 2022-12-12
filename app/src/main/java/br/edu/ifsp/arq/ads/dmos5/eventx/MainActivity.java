@@ -82,10 +82,10 @@ public class MainActivity extends AppCompatActivity {
         setFloatActionButton();
         setToolBar();
         setDrawerLayout();
-        setNavigationView();
         loadUserLogged();
         setTextLogin();
         getEventList();
+        setNavigationView();
     }
 
     private void setFloatActionButton() {
@@ -149,6 +149,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void setNavigationView() {
         navigationView = findViewById(R.id.nav_view);
+
+
+
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
                     @Override
@@ -160,19 +163,24 @@ public class MainActivity extends AppCompatActivity {
                                 startActivity(intent);
                                 break;
                             case R.id.nav_account:
-                                Toast.makeText(MainActivity.this, "Minha conta", Toast.LENGTH_SHORT).show();
+                                intent = new Intent(MainActivity.this, UserProfileActivity.class);
+                                startActivity(intent);
                                 break;
                             case R.id.nav_my_events:
-                                Toast.makeText(MainActivity.this, "Meus eventos", Toast.LENGTH_SHORT).show();
+                                intent = new Intent(MainActivity.this, InviteConfirmation.class);
+                                startActivity(intent);
                                 break;
                             case R.id.nav_events:
-                                Toast.makeText(MainActivity.this, "Novo evento", Toast.LENGTH_SHORT).show();
+                                intent = new Intent(MainActivity.this, InviteConfirmation.class);
+                                startActivity(intent);
                                 break;
                             case R.id.nav_settings:
                                 Toast.makeText(MainActivity.this, "Configuração", Toast.LENGTH_SHORT).show();
                                 break;
                             case R.id.nav_logout:
-                                Toast.makeText(MainActivity.this, "logout", Toast.LENGTH_SHORT).show();
+                                intent = new Intent(MainActivity.this, InviteConfirmation.class);
+                                startActivity(intent);
+                                userViewModel.logout();
                                 break;
                         }
                         drawerLayout.closeDrawer(GravityCompat.START);

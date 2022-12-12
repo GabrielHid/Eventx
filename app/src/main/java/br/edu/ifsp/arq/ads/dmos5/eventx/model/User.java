@@ -1,5 +1,7 @@
 package br.edu.ifsp.arq.ads.dmos5.eventx.model;
 
+import android.media.Image;
+
 import androidx.annotation.NonNull;
 import androidx.room.Ignore;
 
