@@ -30,5 +30,10 @@ public class EventViewModel extends AndroidViewModel {
         eventsRepository.delete(event, eventActivity);
     }
 
+    public Event getById(String id){
+        return eventsRepository.getById(id);
+    }
+
+
 
 }

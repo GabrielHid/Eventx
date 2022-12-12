@@ -16,6 +16,7 @@ import java.util.Map;
 
 import br.edu.ifsp.arq.ads.dmos5.eventx.AddEventActivity;
 import br.edu.ifsp.arq.ads.dmos5.eventx.model.Event;
+import br.edu.ifsp.arq.ads.dmos5.eventx.model.User;
 
 public class EventsRepository {
 
@@ -78,5 +79,17 @@ public class EventsRepository {
                         Toast.makeText(eventActivity.getBaseContext(), "Ocorreu um erro ao deletar o evento: " + e.toString(), Toast.LENGTH_LONG).show();
                     }
                 });
+    }
+
+    public Event getById(String id){
+        Event event = new Event();
+        db = FirebaseFirestore.getInstance();
+        DocumentReference userRef = db.collection("event").document(id);
+        userRef.get().addOnSuccessListener(snapshot -> {
+            Event event2 = snapshot.toObject(Event.class);
+            event.setId(event2.getId());
+
+        });
+        return event;
     }
 }

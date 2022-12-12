@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import br.edu.ifsp.arq.ads.dmos5.eventx.AddEventActivity;
+import br.edu.ifsp.arq.ads.dmos5.eventx.InvitesActivity;
 import br.edu.ifsp.arq.ads.dmos5.eventx.MainActivity;
 import br.edu.ifsp.arq.ads.dmos5.eventx.model.Event;
 
@@ -60,6 +61,8 @@ public class CustomAdapterEvent extends RecyclerView.Adapter<ViewHolderEvent> {
 
                             if (i == 0) {
 
+                                listEventActivity.finish();
+
                                 String id = events.get(position).getId();
                                 String name = events.get(position).getName();
                                 String description = events.get(position).getDescription();
@@ -82,21 +85,11 @@ public class CustomAdapterEvent extends RecyclerView.Adapter<ViewHolderEvent> {
                             }
 
                             if (i == 1) {
+
                                 listEventActivity.deleteEvent(events.get(position));
                             }
                         }
-                    }).create();
-
-
-                    if(user != null){
-                        if(user.getId().equals(events.get(position).getOwnerId())){
-                            builder.show();
-                        } else{
-                            Toast.makeText(listEventActivity.getBaseContext(),
-                                    "Apenas o dono do evento pode editar",
-                                    Toast.LENGTH_SHORT).show();
-                        }
-                    }
+                    }).create().show();
                 }
         });
 
